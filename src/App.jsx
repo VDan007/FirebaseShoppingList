@@ -1,7 +1,7 @@
 import { initializeApp} from 'firebase/app';
-import { getDatabase } from 'firebase/database';
+import { getDatabase, ref, push } from 'firebase/database';
 import { HomePage } from './components/HomePage';
-
+ 
 
 function App() {
 
@@ -17,10 +17,19 @@ function App() {
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
-  console.log(db);
+  const shoppingListInDb = ref(db,'shoppingList');
+
+  function dbPush(item){
+    push(shoppingListInDb,item);
+  }
+  
+
+
   return (
     <div className="App">
-      <HomePage/>
+      <HomePage
+        addToList = {dbPush}
+      />
     </div>
        
   )
