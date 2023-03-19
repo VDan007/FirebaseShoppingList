@@ -1,6 +1,7 @@
 import { initializeApp} from 'firebase/app';
-import { getDatabase, ref, push } from 'firebase/database';
+import { getDatabase, ref, push, onValue } from 'firebase/database';
 import { HomePage } from './components/HomePage';
+import { useEffect } from 'react';
  
 
 function App() {
@@ -23,6 +24,14 @@ function App() {
     push(shoppingListInDb,item);
   }
   
+  useEffect(
+    ()=>{
+     return onValue(shoppingListInDb,(s)=>{
+     const data = s.val()
+     console.log(data)})
+
+    },[]
+  );
 
 
   return (
