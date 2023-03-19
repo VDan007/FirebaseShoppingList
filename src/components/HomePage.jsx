@@ -3,26 +3,23 @@ import {ItemToBuy } from './ItemToBuy';
 
 function HomePage(props){
     const [itemToBuy,setItemToBuy] = useState('');
-    const [allItems,setAllItems] = useState([]);
-    console.log(allItems);
+    console.log(itemToBuy);
+    
 
 
     function addItem(){
         props.addToList(itemToBuy);
-        setAllItems(prev=>{
-            return [...prev,itemToBuy];
-        });
         setItemToBuy('');
     }
 
     
-    const itemListToRender = allItems.map(item=>{
+    const itemListToRender = props.allItems.map(item=>{
         return <ItemToBuy
-                 item={item}
-                 key={item+Math.random()*100}
+                 item={item[1]}
+                 key={item[0]}
                />
     });
-
+    
     return(
         <div className="homePage">
 

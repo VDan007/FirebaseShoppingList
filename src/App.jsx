@@ -1,7 +1,7 @@
 import { initializeApp} from 'firebase/app';
 import { getDatabase, ref, push, onValue } from 'firebase/database';
 import { HomePage } from './components/HomePage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
  
 
 function App() {
@@ -20,15 +20,18 @@ function App() {
   const db = getDatabase(app);
   const shoppingListInDb = ref(db,'shoppingList');
 
+  const [allItems,setAllItems] = useState([]);
+
   function dbPush(item){
     push(shoppingListInDb,item);
   }
   
   useEffect(
     ()=>{
-     return onValue(shoppingListInDb,(s)=>{
-     const data = s.val()
-     console.log(data)})
+      return onValue(shoppingListInDb,(s)=>{
+        const data = Object.entries(s.val());
+        setAllItems(data)
+        });
 
     },[]
   );
@@ -38,6 +41,8 @@ function App() {
     <div className="App">
       <HomePage
         addToList = {dbPush}
+        allItems = { allItems }
+        
       />
     </div>
        
