@@ -2,4 +2,37 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+
+.homePage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.catImg{
+  width: 20%;
+}
+
+.homepageInput,
+.addToCartBtn{
+  width: 40%;
+  padding: 0.6rem 0;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+.homepageInput{
+  background-color: rgb(218,225,234);
+  
+}
+.homepageInput::placeholder{
+  color: rgb(172,172,172);
+}
+.addToCartBtn{
+  background-color: rgb(172,71,90);
+  color: whitesmoke;
 }
