@@ -1,5 +1,5 @@
 import { initializeApp} from 'firebase/app';
-import { getDatabase, ref, push, onValue } from 'firebase/database';
+import { getDatabase, ref, push, onValue,remove } from 'firebase/database';
 import { HomePage } from './components/HomePage';
 import { useEffect, useState } from 'react';
  
@@ -25,12 +25,23 @@ function App() {
   function dbPush(item){
     push(shoppingListInDb,item);
   }
+
+  function dbRemove(id){
+    const location = ref(db,`shoppingList/${id}`);
+    console.log("rem01Run");
+    remove(location);
+    console.log('rem02Run');
+  }
   
   useEffect(
     ()=>{
       return onValue(shoppingListInDb,(s)=>{
-        const data = Object.entries(s.val());
-        setAllItems(data)
+        if(s.val()){
+          const data = Object.entries(s.val());
+          setAllItems(data)
+        }else{
+          setAllItems([]);
+        }
         });
 
     },[]
@@ -42,6 +53,7 @@ function App() {
       <HomePage
         addToList = {dbPush}
         allItems = { allItems }
+        removeFromList = {dbRemove}
         
       />
     </div>

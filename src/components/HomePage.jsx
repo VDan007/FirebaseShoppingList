@@ -17,6 +17,8 @@ function HomePage(props){
         return <ItemToBuy
                  item={item[1]}
                  key={item[0]}
+                 id = {item[0]}
+                 removeFromList = { props.removeFromList}
                />
     });
     

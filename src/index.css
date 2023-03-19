@@ -24,6 +24,7 @@
   border-radius: 10px;
   border: none;
   text-align: center;
+  font-size: 1rem;
 }
 
 .homepageInput{
@@ -36,4 +37,23 @@
 .addToCartBtn{
   background-color: rgb(172,71,90);
   color: whitesmoke;
+}
+
+.itemList{
+  display:flex;
+  flex-wrap: wrap;
+  width: 40%;
+  max-width: 40%;
+  gap: 0.5rem;
+  
+
+}
+
+.itemToBuyDiv{
+  background-color: #FFFDF8;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  flex-grow: 1;
+  text-align: center;
 }
