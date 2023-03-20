@@ -24,7 +24,7 @@
 
 .homepageInput,
 .addToCartBtn{
-  width: 50%;
+  width: 70%;
   padding: 0.6rem 0;
   border-radius: 10px;
   border: none;
@@ -52,8 +52,8 @@
 .itemList{
   display:flex;
   flex-wrap: wrap;
-  width: 50%;
-  max-width: 50%;
+  width: 70%;
+  max-width: 70%;
   gap: 0.5rem;
   
 
