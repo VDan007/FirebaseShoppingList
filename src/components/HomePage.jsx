@@ -3,7 +3,7 @@ import {ItemToBuy } from './ItemToBuy';
 
 function HomePage(props){
     const [itemToBuy,setItemToBuy] = useState('');
-    console.log(itemToBuy);
+    
     
 
 
@@ -12,15 +12,23 @@ function HomePage(props){
         setItemToBuy('');
     }
 
-    
-    const itemListToRender = props.allItems.map(item=>{
-        return <ItemToBuy
-                 item={item[1]}
-                 key={item[0]}
-                 id = {item[0]}
-                 removeFromList = { props.removeFromList}
-               />
-    });
+    console.log(props.allItems)
+    const itemListToRender = props.allItems.length > 0  ?
+        props.allItems.map(item=>{
+        
+                return  <ItemToBuy
+                        item={item[1]}
+                        key={item[0]}
+                        id = {item[0]}
+                        removeFromList = { props.removeFromList}
+                        />
+                
+
+                
+        })
+        :
+        <p className="noItemsP">No Items Here</p>
+ 
     
     return(
         <div className="homePage">
@@ -44,7 +52,8 @@ function HomePage(props){
             </button>
 
             <div className="itemList">
-                {itemListToRender}
+                {itemListToRender }
+                
             </div>  
 
         </div>

@@ -28,15 +28,13 @@ function App() {
 
   function dbRemove(id){
     const location = ref(db,`shoppingList/${id}`);
-    console.log("rem01Run");
     remove(location);
-    console.log('rem02Run');
   }
   
   useEffect(
     ()=>{
       return onValue(shoppingListInDb,(s)=>{
-        if(s.val()){
+        if(s.exists()){
           const data = Object.entries(s.val());
           setAllItems(data)
         }else{

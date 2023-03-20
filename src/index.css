@@ -57,3 +57,9 @@
   flex-grow: 1;
   text-align: center;
 }
+
+.noItemsP{
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+}
