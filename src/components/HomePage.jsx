@@ -27,7 +27,7 @@ function HomePage(props){
                 
         })
         :
-        <p className="noItemsP">No Items Here</p>
+        <p className="noItemsP">No Items Here...yet</p>
  
     
     return(
